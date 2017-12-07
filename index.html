@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>My first Vue app</title>
-  <script src="https://unpkg.com/vue"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
   <div id="app">
@@ -37,6 +38,59 @@
     <p>{{ message }}</p>
     <input v-model="message">
   </div>
+
+  <h3>Composing w/ Components</h3>
+  <div id="app-7">
+    {{ groceryList }}
+    <ol>
+      <!--
+        Now we provide each todo-item with the todo object
+        it's representing, so that its content can be dynamic.
+        We also need to provide each component with a "key",
+        which will be explained later.
+      -->
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id">
+      </todo-item>
+    </ol>
+  </div>
+
+  <h3>Watch Example (async api call, lodash debounce, etc)</h3>
+  <div id="watch-example">
+    <p>
+      Ask a yes/no question
+      <input v-model="question">
+    </p>
+    <h4>
+      {{ answer }}
+    </h4>
+  </div>
+  <h3>CSS Class Object Syntax</h3>
+  <div id="app-8">
+    <h4 v-bind:class="{'text-info': infoText}">
+      Here go some info text, chump
+    </h4>
+  </div>
+  <h3>CSS Class with single object</h3>
+  <div id="app-9">
+    <h4 v-bind:class="classObject">
+      classObject applies all styles from object!!!
+      <a :href="myUrl">Link to google</a></br>
+      Here is some interpreted HTML: <span v-html="rawHtml"></span>
+    </h4>
+    <button v-on:click="callThis">Change up the html, yo</button>
+  </div>
+
+
+  <!-- Since there is already a rich ecosystem of ajax libraries    -->
+  <!-- and collections of general-purpose utility methods, Vue core -->
+  <!-- is able to remain small by not reinventing them. This also   -->
+  <!-- gives you the freedom to use what you're familiar with. -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
 
   <script src="app.js"></script>
 </body>
