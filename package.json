@@ -1,0 +1,22 @@
+{
+  "name": "vue-getting-started",
+  "version": "1.0.0",
+  "description": "Repo for following along on https://vuejs.org/v2/guide/",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blwasham/vue-guide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blwasham/vue-guide/issues"
+  },
+  "homepage": "https://github.com/blwasham/vue-guide#readme",
+  "dependencies": {
+    "vue": "^2.5.9"
+  }
+}

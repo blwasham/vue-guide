@@ -6,7 +6,36 @@
 </head>
 <body>
   <div id="app">
-    {{ message }}
+    <h3>Declarative Rendering</h3>
+    <span v-bind:title="message">
+      Hover your mouse over me for a few seconds
+      to see my dynamically bound title!
+    </span>
+  </div>
+  <h3>Conditionals</h3>
+  <div id="app-2">
+    <span v-if="seen">Now you see me</span>
+  </div>
+
+  <h3>Loops</h3>
+  <div id="myTodoList">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <h3>Handling User Input</h3>
+  <div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+
+  <h3>Two-way binding</h3>
+  <div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
   </div>
 
   <script src="app.js"></script>
