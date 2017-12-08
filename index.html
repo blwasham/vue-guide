@@ -81,7 +81,27 @@
       Here is some interpreted HTML: <span v-html="rawHtml"></span>
     </h4>
     <button v-on:click="callThis">Change up the html, yo</button>
+
+
+    <h3>Super Awesome Component</h3>
+    <super-awesome-comp my-message="Woo Woo Woot!">should show my-message</super-awesome-comp>
   </div>
+
+  <h3>Super Awesome Comp w/ Dynamic Props</h3>
+  <div id="app-10">
+    Change Msg: <input v-model="parentMsg">
+    <br>
+    <super-awesome-comp :my-message-two="parentMsg"></super-awesome-comp>
+  </div>
+
+  <h3>Component that accepts object property</h3>
+  <div id="app-11">
+    parentObj: {{ parentObj }}<br>
+
+    Now show the component:
+    <super-awesome-obj v-bind="parentObj"></super-awesome-obj>
+  </div>
+
 
 
   <!-- Since there is already a rich ecosystem of ajax libraries    -->

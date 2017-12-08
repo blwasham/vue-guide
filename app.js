@@ -3,6 +3,16 @@ Vue.component('todo-item', {
   template: '<li>{{ todo.text }}</li>'
 });
 
+Vue.component('super-awesome-comp', {
+  props: ['myMessageTwo'],
+  template: '<strong class="text-success">Super Awesome Message: {{ myMessageTwo }}</strong>'
+});
+
+Vue.component('super-awesome-obj', {
+  props: ['keyUpper1', 'two'],
+  template: '<div>Lookout! {{ keyUpper1 }} - {{ two }}</div>'
+});
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -111,6 +121,24 @@ var app9 = new Vue({
   methods: {
     callThis: function() {
       this.rawHtml = "<em class='text-danger'>Take'n it to tha streets</em>";
+    }
+  }
+});
+
+var app10 = new Vue({
+  el: '#app-10',
+  data: {
+    parentMsg: 'bla bla bla'
+  }
+});
+
+var app11 = new Vue({
+  el: '#app-11',
+  data: {
+    parentObj: {
+      keyUpper1: 'key 1 val',
+      two: 'key 2 val',
+      three: 'key 3 val'
     }
   }
 });
