@@ -13,6 +13,36 @@ Vue.component('super-awesome-obj', {
   template: '<div>Lookout! {{ keyUpper1 }} - {{ two }}</div>'
 });
 
+Vue.component('comp', {
+  props: ['firstNum', 'secondNum'],
+  template: '<div>{{firstNum + secondNum}}</div>'
+});
+
+Vue.component('count-by', {
+  props: ['countBy'],
+  data: function() {
+    return { counter: this.countBy };
+  },
+  methods: {
+    incrementCounter: function() {
+      alert('this called', this.counter);
+      this.totalCount += this.counter;
+    }
+  },
+  template:
+    '<div>Count By:  {{ counter }}<br>Total Count: {{ totalCount }}<br><button v-on:click="incrementCounter">Increment Count</button></div>'
+});
+
+Vue.component('times-by', {
+  props: ['timesBy'],
+  computed: {
+    timesByAnswer: function() {
+      return this.timesBy * this.timesBy;
+    }
+  },
+  template: '<div>{{timesBy}} * {{timesBy}} = {{timesByAnswer}}</div>'
+});
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -140,5 +170,17 @@ var app11 = new Vue({
       two: 'key 2 val',
       three: 'key 3 val'
     }
+  }
+});
+
+var app12 = new Vue({
+  el: '#app-12'
+});
+
+var app13 = new Vue({
+  el: '#app-13',
+  data: {
+    countBy: '1',
+    timesBy: '10'
   }
 });

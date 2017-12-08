@@ -102,7 +102,22 @@
     <super-awesome-obj v-bind="parentObj"></super-awesome-obj>
   </div>
 
+  <h3>Literals vs. Dynamic</h3>
+  <div id="app-12">
+    <h4>Pass down a number</h4>
+    <comp v-bind:first-num="10" v-bind:second-num="20"></comp>
+  </div>
 
+  <h3>One way data flow</h3>
+  <div id="app-13">
+    <h4>One way down</h4>
+    Count By from parent: {{ countBy }}
+    <count-by :count-by="countBy"></count-by>
+
+    <h4>Computed Property</h4>
+    Times By: <input v-model="timesBy">
+    <times-by :times-by="timesBy"></times-by>
+  </div>
 
   <!-- Since there is already a rich ecosystem of ajax libraries    -->
   <!-- and collections of general-purpose utility methods, Vue core -->
