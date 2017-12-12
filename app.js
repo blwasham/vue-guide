@@ -21,12 +21,16 @@ Vue.component('comp', {
 Vue.component('count-by', {
   props: ['countBy'],
   data: function() {
-    return { counter: this.countBy };
+    return {
+      counter: this.countBy,
+      totalCount: undefined
+    };
   },
   methods: {
     incrementCounter: function() {
-      alert('this called', this.counter);
+      alert(this.counter);
       this.totalCount += this.counter;
+      alert(this.totalCount);
     }
   },
   template:
@@ -182,5 +186,56 @@ var app13 = new Vue({
   data: {
     countBy: '1',
     timesBy: '10'
+  }
+});
+
+var app14 = new Vue({
+  el: '#app-14',
+  data: {
+    blabla: undefined
+  }
+});
+
+var app15 = new Vue({
+  el: '#app-15',
+  data: {
+    season: '1995',
+    hornets: [
+      {
+        name: 'Muggsy Bogues',
+        numb: '1',
+        height: '5ft3in'
+      },
+      {
+        name: 'Larry Johnson',
+        numb: '2',
+        height: '6ft7in'
+      },
+      {
+        name: 'Dell Curry',
+        numb: '33',
+        height: '6ft5in'
+      }
+    ]
+  }
+});
+
+var app16 = new Vue({
+  el: '#app-16',
+  data: {
+    albums: {
+      release1: 'Beauty In The Broken'
+    }
+  },
+  methods: {
+    addOneProp: function() {
+      Vue.set(this.albums, 'release2', 'Scorpion & The Dove');
+    },
+    addBunchProps: function() {
+      this.albums = Object.assign({}, this.albums, {
+        release3: 'Live in NYC vol1',
+        release4: 'Afterlens'
+      });
+    }
   }
 });

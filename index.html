@@ -119,6 +119,41 @@
     <times-by :times-by="timesBy"></times-by>
   </div>
 
+  <h3>v-if & v-else</h3>
+  <div id="app-14">
+    <input v-model="blabla">
+    <div v-if="blabla === '1'">
+      blabla is 1
+    </div>
+    <div v-else-if="blabla === '2'">
+      blabla ia 2
+    </div>
+    <div v-else>
+      blabla falsey
+    </div>
+  </div>
+
+  <h3>Famous Hornets</h3>
+  <ul id="app-15">
+    <li v-for="(hornet, index) in hornets" :key="hornet.numb">
+      {{ index }}.
+      <strong v-for="v in hornet">
+        {{v}}
+      </strong>
+    </li>
+  </ul>
+
+  <h3>Object Change Detection</h3>
+  <div id="app-16">
+    <button v-on:click="addOneProp">
+      Add One Property
+    </button>
+    <button v-on:click="addBunchProps">
+      Add Bunch Properties
+    </button>
+    <pre>{{albums}}</pre>
+  </div>
+
   <!-- Since there is already a rich ecosystem of ajax libraries    -->
   <!-- and collections of general-purpose utility methods, Vue core -->
   <!-- is able to remain small by not reinventing them. This also   -->
