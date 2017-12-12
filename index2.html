@@ -6,11 +6,94 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
   <body>
-    <div id="app">
-      <h3>Declarative Rendering</h3>
-      <span v-bind:title="message">
-        Hover your mouse over me for a few seconds
-        to see my dynamically bound title!
+
+    <h3>Displaying Filtered/Sorted Results</h3>
+    <ul id="app-17">
+      <li v-for="n in evenNumbers">
+        {{ n }}
+      </li>
+    </ul>
+
+    <h3>v-for on a template</h3>
+    <ul id="app-18">
+      <template v-for="item in items">
+        <li>{{ item.msg }}</li>
+        <li class="text-danger">woot woot</li>
+      </template>
+    </ul>
+
+    <h3>v-for with v-if</h3>
+    <ul id="app-19">
+      <li v-for="todo in todos">
+        {{ todo.msg }}
+      </li>
+    </ul>
+
+    <h3>v-for with a component</h3>
+    <div id="todo-list-example">
+      <input
+        v-model="newTodoText"
+        v-on:keyup.enter="addNewTodo"
+        placeholder="Add a todo"
+      >
+      <ul>
+        <li
+          is="todo-item"
+          v-for="(todo, index) in todos"
+          v-bind:key="todo.id"
+          v-bind:title="todo.title"
+          v-on:remove="todos.splice(index, 1)"
+        ></li>
+      </ul>
+    </div>
+
+    <h3>Listening to events</h3>
+    <div id="app-22">
+      <button v-on:click="counter += 1">Add 1</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+
+    <h3>Method Event Handlers</h3>
+    <div id="app-23">
+      <button v-on:click="greet">Greet Me</button>
+    </div>
+
+    <h3>Forms: Multiple checkboxes, radios, select</h3>
+    <div id="app-24">
+      <h4>Basic Checkbox</h4>
+      <input type='checkbox' id="muggsy" value="muggsy" v-model="checkedNames">
+      <label for="muggsy">Muggsy Bogues</label>
+      <input type="checkbox" id="larry" value="larry" v-model="checkedNames">
+      <label for="larry">Larry Johnson</label>
+      <input type="checkbox" id="alonzo2" value="alonzo" v-model="checkedNames">
+      <label for="alonzo2">Alonzo Mourning</label>
+      <br><br>
+      <h4>Basic Radio</h4>
+      <input type="radio" id="one" value="one" v-model="picked">
+      <label for="one">Radio One</label>
+      <br>
+      <input type="radio" id="two" value="two" v-model="picked">
+      <label for="one">Radio Two</label>
+      <br><br>
+      <h4>Basic Select</h4>
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <h4>Dynamic Select</h4>
+      <select v-model="selected2">
+        <option v-for="option in myOptions" v-bind:value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+      <br>
+      <span>
+        CheckedName: {{ checkedNames }}<br>
+        RadioPicked: {{ picked }}<br>
+        selected: {{ selected }}<br>
+        selected2: {{ selected2 }}
       </span>
     </div>
 
