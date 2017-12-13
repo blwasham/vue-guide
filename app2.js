@@ -3,6 +3,48 @@ Vue.component('todo-item', {
   props: ['title']
 });
 
+Vue.component('prop-validation', {
+  props: {
+    propA: {
+      type: String,
+      required: true
+    }
+  },
+  template: '<h1 class="text-warning">{{ propA }}</h1>'
+});
+
+Vue.component('button-counter', {
+  template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+  data: function() {
+    return {
+      counter: 0
+    };
+  },
+  methods: {
+    incrementCounter: function() {
+      this.counter += 1;
+      this.$emit('increment');
+    }
+  }
+});
+
+Vue.component('currency-input', {
+  template: '<span>$<input ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)">',
+  props: ['value'],
+  updateValue: function(value) {
+    var formattedValue = value.trim().slice(0, value.indexOf('.') === -1 ? value.length : value.indexOf('.') + 3);
+
+    // if value was not already normalized
+    // manually override it to conform
+    if (formattedValue !== value) {
+      this.$refs.input.value = formattedValue;
+    }
+
+    // emit the number value through the input event
+    this.$emit('input', Number(formattedValue));
+  }
+});
+
 var app17 = new Vue({
   el: '#app-17',
   data: {
@@ -44,29 +86,6 @@ var app19 = new Vue({
         isComplete: true
       },
       {
-        msg: 'order presents',
-        isComplete: false
-      }
-    ]
-  }
-});
-
-var app20 = new Vue({
-  el: '#app-20',
-  data: {
-    todos: [
-      {
-        id: 1,
-        msg: 'clean my room',
-        isComplete: true
-      },
-      {
-        id: 2,
-        msg: 'do dishes',
-        isComplete: true
-      },
-      {
-        id: 3,
         msg: 'order presents',
         isComplete: false
       }
@@ -137,28 +156,22 @@ var app24 = new Vue({
   }
 });
 
-// app23.greet();
-// component examples
-// Vue.component('comp', {
-//   props: ['firstNum', 'secondNum'],
-//   template: '<div>{{firstNum + secondNum}}</div>'
-// });
-//
-// Vue.component('count-by', {
-//   props: ['countBy'],
-//   data: function() {
-//     return {
-//       counter: this.countBy,
-//       totalCount: undefined
-//     };
-//   },
-//   methods: {
-//     incrementCounter: function() {
-//       alert(this.counter);
-//       this.totalCount += this.counter;
-//       alert(this.totalCount);
-//     }
-//   },
-//   template:
-//     '<div>Count By:  {{ counter }}<br>Total Count: {{ totalCount }}<br><button v-on:click="incrementCounter">Increment Count</button></div>'
-// });
+var app25 = new Vue({
+  el: '#app-25'
+});
+
+var app26 = new Vue({
+  el: '#app-26',
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function() {
+      this.total += 1;
+    }
+  }
+});
+
+var app27 = new Vue({
+  el: '#app-27'
+});

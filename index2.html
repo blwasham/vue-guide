@@ -97,6 +97,23 @@
       </span>
     </div>
 
+    <h3>Property Validation</h3>
+    <div id="app-25">
+      <prop-validation prop-a="some string"></prop-validation>
+    </div>
+
+    <h3>Using v-on w/ Custom Events</h3>
+    <div id="app-26">
+      <p>{{ total }}</p>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+    </div>
+
+    <h3>Form Input Components using Custom Events</h3>
+    <div id="app-27">
+      <currency-input v-model="price"></currenty-input>
+    </div>
+
     <!-- Since there is already a rich ecosystem of ajax libraries    -->
     <!-- and collections of general-purpose utility methods, Vue core -->
     <!-- is able to remain small by not reinventing them. This also   -->
