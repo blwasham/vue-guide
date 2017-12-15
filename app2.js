@@ -45,6 +45,10 @@ Vue.component('currency-input', {
   }
 });
 
+Vue.component('my-component', {
+  template: '<h1 class="text-warning">your mom<slot>some content in slot</slot></h1>'
+});
+
 var app17 = new Vue({
   el: '#app-17',
   data: {
@@ -174,4 +178,8 @@ var app26 = new Vue({
 
 var app27 = new Vue({
   el: '#app-27'
+});
+
+var app28 = new Vue({
+  el: '#app-28'
 });
